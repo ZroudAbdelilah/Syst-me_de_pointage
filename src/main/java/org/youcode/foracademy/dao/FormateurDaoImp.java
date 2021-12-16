@@ -1,4 +1,4 @@
 package org.youcode.foracademy.dao;
 
-public class FormateurDaoImp {
+public class FormateurDaoImp implements FormateurDao{
 }

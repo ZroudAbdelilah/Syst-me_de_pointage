@@ -1,0 +1,164 @@
+Index: src/main/java/jdbc/Simple.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/jdbc/Simple.java b/src/main/java/jdbc/Simple.java
+new file mode 100644
+--- /dev/null	(date 1639634347871)
++++ b/src/main/java/jdbc/Simple.java	(date 1639634347871)
+@@ -0,0 +1,7 @@
++package jdbc;
++
++public class Simple {
++    public static void main(String[] args) {
++        System.out.println("fffff");
++    }
++}
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+new file mode 100644
+--- /dev/null	(date 1639634323887)
++++ b/pom.xml	(date 1639634323887)
+@@ -0,0 +1,42 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++    <modelVersion>4.0.0</modelVersion>
++
++    <groupId>groupId</groupId>
++    <artifactId>Syst-me_de_pointage</artifactId>
++    <version>1.0-SNAPSHOT</version>
++
++
++    <build>
++        <plugins>
++            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-compiler-plugin</artifactId>
++                <version>3.8.1</version>
++                <configuration>
++                    <release>11</release>
++                </configuration>
++            </plugin>
++      </plugins>
++
++
++
++  </build>
++
++    <dependencies>
++
++    <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
++    <dependency>
++        <groupId>org.postgresql</groupId>
++        <artifactId>postgresql</artifactId>
++        <version>42.3.1</version>
++    </dependency>
++    </dependencies>
++
++    </project>
++
++
++
+Index: src/main/java/jdbc/Models/User.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/jdbc/Models/User.java b/src/main/java/jdbc/Models/User.java
+new file mode 100644
+--- /dev/null	(date 1639634602685)
++++ b/src/main/java/jdbc/Models/User.java	(date 1639634602685)
+@@ -0,0 +1,33 @@
++package jdbc.Models;
++
++public class User {
++    private Long id;
++    private String name;
++
++    public User() {
++    }
++
++    public Long getId() {
++        return id;
++    }
++
++    public void setId(Long id) {
++        this.id = id;
++    }
++
++    public String getName() {
++        return name;
++    }
++
++    public void setName(String name) {
++        this.name = name;
++    }
++
++    @Override
++    public String toString() {
++        return "User{" +
++                "id=" + id +
++                ", name='" + name + '\'' +
++                '}';
++    }
++}
+Index: src/main/java/jdbc/Dao/UserDao.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/jdbc/Dao/UserDao.java b/src/main/java/jdbc/Dao/UserDao.java
+new file mode 100644
+--- /dev/null	(date 1639636381827)
++++ b/src/main/java/jdbc/Dao/UserDao.java	(date 1639636381827)
+@@ -0,0 +1,42 @@
++package jdbc.Dao;
++
++import jdbc.Models.User;
++import javax.swing.plaf.nimbus.State;
++import java.sql.*;
++
++public class UserDao {
++    private String url;
++    private String username;
++    private String password;
++
++    public UserDao(String url, String username, String password) {
++        this.url = url;
++        this.username = username;
++        this.password = password;
++    }
++
++    public void addUser(User user){
++        try {
++            Connection connection = DriverManager.getConnection(url, username, password);
++            if(user.getId() != null){
++                PreparedStatement statement = connection.prepareStatement
++                        (sql: "update user set name = ? where id = ?;");
++                statement.setString(parameterIndex: 1,user.getName());
++                statement.setLong(parameterIndex: 2, user.getId(););
++                statement.execute();
++            } else
++            {
++                PreparedStatement statement = connection.prepareStatement
++                        (sql: "insert into user (name) values (?);");
++                statement.setString(parameterIndex: 1,user.getName());
++                statement.execute();
++            }
++            System.out.println(user.getName() + "saved successfully");
++
++        } catch (SQLException e) {
++            e.printStackTrace();
++            System.out.println(user.getName() + "unsaved");
++
++        }
++    }
++}

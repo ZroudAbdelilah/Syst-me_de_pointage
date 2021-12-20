@@ -47,4 +47,14 @@ public class Permission {
     public void setStatus_permission(boolean status_permission) {
         this.status_permission = status_permission;
     }
+
+    @Override
+    public String toString() {
+        return "Permission{" +
+                "id_permission=" + id_permission +
+                ", name_permission='" + name_permission + '\'' +
+                ", description_permission='" + description_permission + '\'' +
+                ", status_permission=" + status_permission +
+                '}';
+    }
 }

@@ -21,4 +21,11 @@ public class Secretary extends User{
     public void setDate_entry_fabrique(Date date_entry_fabrique) {
         this.date_entry_fabrique = date_entry_fabrique;
     }
+
+    @Override
+    public String toString() {
+        return "Secretary{" +
+                "date_entry_fabrique=" + date_entry_fabrique +
+                '}';
+    }
 }

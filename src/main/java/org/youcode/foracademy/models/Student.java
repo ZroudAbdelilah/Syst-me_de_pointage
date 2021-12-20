@@ -19,4 +19,11 @@ public class Student extends User{
     public void setSpecialiter(Specialiter specialiter) {
         this.specialiter = specialiter;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "specialiter=" + specialiter +
+                '}';
+    }
 }

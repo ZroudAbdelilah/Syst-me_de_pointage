@@ -49,4 +49,14 @@ public class Event {
     public void setEnd_date(Date end_date) {
         this.end_date = end_date;
     }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "id_event=" + id_event +
+                ", name_event='" + name_event + '\'' +
+                ", start_date=" + start_date +
+                ", end_date=" + end_date +
+                '}';
+    }
 }

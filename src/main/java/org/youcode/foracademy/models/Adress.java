@@ -58,4 +58,15 @@ public class Adress {
     public void setCode_postal(Integer code_postal) {
         this.code_postal = code_postal;
     }
+
+    @Override
+    public String toString() {
+        return "Adress{" +
+                "id_adress=" + id_adress +
+                ", country='" + country + '\'' +
+                ", region='" + region + '\'' +
+                ", city='" + city + '\'' +
+                ", code_postal=" + code_postal +
+                '}';
+    }
 }

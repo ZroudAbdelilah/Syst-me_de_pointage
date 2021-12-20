@@ -47,4 +47,14 @@ public class Role {
     public void setStatus_role(boolean status_role) {
         this.status_role = status_role;
     }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id_role=" + id_role +
+                ", name_role='" + name_role + '\'' +
+                ", description_role='" + description_role + '\'' +
+                ", status_role=" + status_role +
+                '}';
+    }
 }

@@ -127,4 +127,22 @@ public class User {
     public void setFabrique(Fabrique fabrique) {
         this.fabrique = fabrique;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id_user=" + id_user +
+                ", first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", phone=" + phone +
+                ", gander='" + gander + '\'' +
+                ", status_compte=" + status_compte +
+                ", role=" + role +
+                ", adress=" + adress +
+                ", event=" + event +
+                ", fabrique=" + fabrique +
+                '}';
+    }
 }

@@ -59,4 +59,15 @@ public class Pointer {
     public void setDo_date(Date do_date) {
         this.do_date = do_date;
     }
+
+    @Override
+    public String toString() {
+        return "Pointer{" +
+                "id_pointer=" + id_pointer +
+                ", user=" + user +
+                ", pointeur=" + pointeur +
+                ", arrival_date=" + arrival_date +
+                ", do_date=" + do_date +
+                '}';
+    }
 }

@@ -59,5 +59,16 @@ public class Class {
     public void setPromotion(Promotion promotion) {
         this.promotion = promotion;
     }
+
+    @Override
+    public String toString() {
+        return "Class{" +
+                "id_class=" + id_class +
+                ", name_class='" + name_class + '\'' +
+                ", start_of_day=" + start_of_day +
+                ", end_of_day=" + end_of_day +
+                ", promotion=" + promotion +
+                '}';
+    }
 }
 

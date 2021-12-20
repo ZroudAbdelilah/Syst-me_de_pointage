@@ -12,7 +12,6 @@ public class DbConnection {
     private static final String PASSWORD = "1234";
 
 
-
     private static  Connection connection;
 
     public static Connection getConnection(){

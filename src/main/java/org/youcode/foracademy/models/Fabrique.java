@@ -47,4 +47,14 @@ public class Fabrique {
     public void setAdress(Adress adress) {
         this.adress = adress;
     }
+
+    @Override
+    public String toString() {
+        return "Fabrique{" +
+                "id_fabrique=" + id_fabrique +
+                ", name_fabrique='" + name_fabrique + '\'' +
+                ", pointeur=" + pointeur +
+                ", adress=" + adress +
+                '}';
+    }
 }

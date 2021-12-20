@@ -27,4 +27,12 @@ public class Pointeur {
     public void setBrand(String brand) {
         this.brand = brand;
     }
+
+    @Override
+    public String toString() {
+        return "Pointeur{" +
+                "id_pointeur=" + id_pointeur +
+                ", brand='" + brand + '\'' +
+                '}';
+    }
 }

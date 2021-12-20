@@ -37,4 +37,13 @@ public class Specialiter {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "Specialiter{" +
+                "id_specialiter=" + id_specialiter +
+                ", name_specialiter='" + name_specialiter + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

@@ -22,4 +22,11 @@ public class ChefFabrique extends User{
     public void setDate_entry_fabrique(Date date_entry_fabrique) {
         this.date_entry_fabrique = date_entry_fabrique;
     }
+
+    @Override
+    public String toString() {
+        return "ChefFabrique{" +
+                "date_entry_fabrique=" + date_entry_fabrique +
+                '}';
+    }
 }

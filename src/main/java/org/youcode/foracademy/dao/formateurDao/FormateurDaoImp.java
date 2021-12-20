@@ -1,6 +1,6 @@
 package org.youcode.foracademy.dao.formateurDao;
 
-import org.youcode.foracademy.models.Formateur;
+import org.youcode.foracademy.models.*;
 import org.youcode.foracademy.util.DbConnection;
 
 import java.sql.Connection;
@@ -45,7 +45,12 @@ public class FormateurDaoImp implements FormateurDao {
         try (PreparedStatement preparedStatement = con.prepareStatement(query)){
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
-                Formateur formateur =new Formateur(resultSet.getLong("id_user"),resultSet.getString("first_name"),resultSet.getString("last_name"),resultSet.getString("email"),resultSet.getString("password"),resultSet.getLong("phone"),resultSet.getString("gander"),resultSet.getBoolean("status_compte"),resultSet.getObject("Role"),resultSet.getObject("id_adress"),resultSet.getObject("id_event"),resultSet.getObject("id_fabrique"),resultSet.getObject("id_specialiter"));
+                Role role = (Role)resultSet.getObject("Role");
+                Adress adress = (Adress) resultSet.getObject("Adress");
+                Fabrique fabrique = (Fabrique) resultSet.getObject("Fabrique");
+                Specialiter specialiter = (Specialiter) resultSet.getObject("Specialiter");
+                Formateur formateur = new Formateur(resultSet.getLong("id_user"),resultSet.getString("first_name"),resultSet.getString("last_name"),resultSet.getString("email"),resultSet.getString("password"),resultSet.getLong("phone"),resultSet.getString("gander"),resultSet.getBoolean("status_compte"),role,adress,fabrique,specialiter);
+
                 formateurs.add(formateur);
             }
         } catch (SQLException se) {
@@ -70,7 +75,16 @@ public class FormateurDaoImp implements FormateurDao {
             preparedStatement.setLong(1,id_user);
             ResultSet resultSet =preparedStatement.executeQuery();
             if(resultSet.next()){
-                Formateur formateur= new Formateur(resultSet.getLong("id_user"),resultSet.getString("first_name"),resultSet.getString("last_name"),resultSet.getString("email"),resultSet.getString("password"),resultSet.getLong("phone"),resultSet.getString("gander"),resultSet.getBoolean("status_compte"),resultSet.getObject("Role"),resultSet.getObject("id_adress"),resultSet.getObject("id_event"),resultSet.getObject("id_fabrique"),resultSet.getObject("id_specialiter"));
+                Role role = (Role)resultSet.getObject("Role");
+                Adress adress = (Adress) resultSet.getObject("Adress");
+                Fabrique fabrique = (Fabrique) resultSet.getObject("Fabrique");
+                Specialiter specialiter = (Specialiter) resultSet.getObject("Specialiter");
+
+
+                Formateur formateur= new Formateur(resultSet.getLong("id_user"),resultSet.getString("first_name"),
+                        resultSet.getString("last_name"),resultSet.getString("email"),resultSet.getString("password"),
+                        resultSet.getLong("phone"),resultSet.getString("gander"),resultSet.getBoolean("status_compte"),
+                        role,adress,fabrique,specialiter);
                 return formateur;
             }
 
@@ -91,7 +105,7 @@ public class FormateurDaoImp implements FormateurDao {
         if(con == null ){
             return ;
         }else{
-            String query =" INSERT INTO formateur (first_name,last_name,email,password,phone,gander,status_compte,id_role,id_adress,id_event,id_fabrique,id_class,id_specialiter VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?) ";
+            String query =" INSERT INTO formateur (first_name,last_name,email,password,phone,gander,status_compte,id_role,id_adress,id_fabrique,id_class,id_specialiter VALUES (?,?,?,?,?,?,?,?,?,?,?,?) ";
             try (PreparedStatement preparedStatement = con.prepareStatement(query)){
 
                 preparedStatement.setString(1, formateur.getFirst_name());
@@ -103,10 +117,9 @@ public class FormateurDaoImp implements FormateurDao {
                 preparedStatement.setBoolean(7,formateur.isStatus_compte());
                 preparedStatement.setObject(8, formateur.getRole());
                 preparedStatement.setObject(9,formateur.getAdress());
-                preparedStatement.setObject(10,formateur.getEvent());
-                preparedStatement.setObject(11,formateur.getFabrique());
-                preparedStatement.setObject(12,formateur.getClass());
-                preparedStatement.setObject(13,formateur.getSpecialiter());
+                preparedStatement.setObject(10,formateur.getFabrique());
+                preparedStatement.setObject(11,formateur.getClass());
+                preparedStatement.setObject(12,formateur.getSpecialiter());
                 preparedStatement.executeUpdate();
 
             } catch (SQLException se) {
@@ -140,7 +153,6 @@ public class FormateurDaoImp implements FormateurDao {
                 preparedStatement.setBoolean(7,formateur.isStatus_compte());
                 preparedStatement.setObject(8, formateur.getRole());
                 preparedStatement.setObject(9,formateur.getAdress());
-                preparedStatement.setObject(10,formateur.getEvent());
                 preparedStatement.setObject(11,formateur.getFabrique());
                 preparedStatement.setObject(12,formateur.getClass());
                 preparedStatement.setObject(13,formateur.getSpecialiter());

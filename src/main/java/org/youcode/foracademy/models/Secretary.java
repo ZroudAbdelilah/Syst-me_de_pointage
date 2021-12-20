@@ -9,8 +9,8 @@ public class Secretary extends User{
         this.date_entry_fabrique = date_entry_fabrique;
     }
 
-    public Secretary(long id_user, String first_name, String last_name, String email, String password, long phone, String gander, boolean status_compte, Role role, Adress adress, Event event, Fabrique fabrique, Date date_entry_fabrique) {
-        super(id_user, first_name, last_name, email, password, phone, gander, status_compte, role, adress, event, fabrique);
+    public Secretary(long id_user, String first_name, String last_name, String email, String password, long phone, String gander, boolean status_compte, Role role, Adress adress, Fabrique fabrique, Date date_entry_fabrique) {
+        super(id_user, first_name, last_name, email, password, phone, gander, status_compte, role, adress,  fabrique);
         this.date_entry_fabrique = date_entry_fabrique;
     }
 

@@ -11,13 +11,12 @@ public class User {
     private boolean status_compte;
     private Role role;
     private Adress adress;
-    private Event event;
     private Fabrique fabrique;
 
     public User() {
     }
 
-    public User(long id_user, String first_name, String last_name, String email, String password, long phone, String gander, boolean status_compte, Role role, Adress adress, Event event, Fabrique fabrique) {
+    public User(long id_user, String first_name, String last_name, String email, String password, long phone, String gander, boolean status_compte, Role role, Adress adress,  Fabrique fabrique) {
         this.id_user = id_user;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -28,7 +27,6 @@ public class User {
         this.status_compte = status_compte;
         this.role = role;
         this.adress = adress;
-        this.event = event;
         this.fabrique = fabrique;
     }
 
@@ -112,13 +110,7 @@ public class User {
         this.adress = adress;
     }
 
-    public Event getEvent() {
-        return event;
-    }
 
-    public void setEvent(Event event) {
-        this.event = event;
-    }
 
     public Fabrique getFabrique() {
         return fabrique;
@@ -141,7 +133,6 @@ public class User {
                 ", status_compte=" + status_compte +
                 ", role=" + role +
                 ", adress=" + adress +
-                ", event=" + event +
                 ", fabrique=" + fabrique +
                 '}';
     }

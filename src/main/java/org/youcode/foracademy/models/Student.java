@@ -1,13 +1,13 @@
 package org.youcode.foracademy.models;
 
-public class Formateur extends User {
+public class Student extends User{
     private Specialiter specialiter;
 
-    public Formateur(Specialiter specialiter) {
+    public Student(Specialiter specialiter) {
         this.specialiter = specialiter;
     }
 
-    public Formateur(long id_user, String first_name, String last_name, String email, String password, long phone, String gander, boolean status_compte, Role role, Adress adress, Event event, Fabrique fabrique, Specialiter specialiter) {
+    public Student(long id_user, String first_name, String last_name, String email, String password, long phone, String gander, boolean status_compte, Role role, Adress adress, Event event, Fabrique fabrique, Specialiter specialiter) {
         super(id_user, first_name, last_name, email, password, phone, gander, status_compte, role, adress, event, fabrique);
         this.specialiter = specialiter;
     }
@@ -22,7 +22,7 @@ public class Formateur extends User {
 
     @Override
     public String toString() {
-        return "Formateur{" +
+        return "Student{" +
                 "specialiter=" + specialiter +
                 '}';
     }

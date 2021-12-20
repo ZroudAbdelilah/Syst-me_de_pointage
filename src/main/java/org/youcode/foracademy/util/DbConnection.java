@@ -7,10 +7,9 @@ import java.sql.SQLException;
 public class DbConnection {
     private static final String Host = "127.0.0.1";
     private static final int PORT = 5432;
-    private static final String DB_NAME = "foracademy";
+    private static final String DB_NAME = "foracademy ";
     private static final String USERNAME = "postgres";
     private static final String PASSWORD = "1234";
-
 
 
     private static  Connection connection;

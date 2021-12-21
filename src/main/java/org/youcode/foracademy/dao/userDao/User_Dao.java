@@ -1,8 +1,9 @@
+
+/*
 import jdbc.Models.User;
 
 import javax.swing.plaf.nimbus.State;
 import java.sql.*;
-
 public class UserDao {
     private String url;
     private String username;
@@ -37,4 +38,4 @@ public class UserDao {
 
         }
     }
-}
+}*/

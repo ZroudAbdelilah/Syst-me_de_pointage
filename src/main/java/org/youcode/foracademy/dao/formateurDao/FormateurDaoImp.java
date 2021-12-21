@@ -104,8 +104,8 @@ public class FormateurDaoImp implements FormateurDao {
         Connection con = DbConnection.getConnection();
         if(con == null ){
             return ;
-        }else{
-            String query =" INSERT INTO formateur (first_name,last_name,email,password,phone,gander,status_compte,id_role,id_adress,id_fabrique,id_class,id_specialiter VALUES (?,?,?,?,?,?,?,?,?,?,?,?) ";
+        }else if (formateur.getId_user() == 0){
+            String query =" INSERT INTO formateur (first_name,last_name,email,password,phone,gander,status_compte,id_role,id_adress,id_fabrique,id_class,id_specialiter VALUES (?,?,?,?,?,?,?,?,?,?,?,?)) ";
             try (PreparedStatement preparedStatement = con.prepareStatement(query)){
 
                 preparedStatement.setString(1, formateur.getFirst_name());
@@ -141,7 +141,7 @@ public class FormateurDaoImp implements FormateurDao {
         if(con == null ){
             return ;
         }else if (formateur.getId_user()!=0){
-            String query =" UPDATE  formateur SET (first_name = ?,last_name = ?,email = ?,password = ?,phone = ?,gander = ?,status_compte = ?,id_role = ?,id_adress = ? ,id_event = ? ,id_fabrique = ? ,id_class = ?,id_specialiter = ? WHERE id = ?s ";
+            String query =" UPDATE  formateur SET first_name = ?,last_name = ?,email = ?,password = ?,phone = ?,gander = ?,status_compte = ?,id_role = ?,id_adress = ? ,id_event = ? ,id_fabrique = ? ,id_class = ?,id_specialiter = ? WHERE id_user = ? ";
             try (PreparedStatement preparedStatement = con.prepareStatement(query)){
 
                 preparedStatement.setString(1, formateur.getFirst_name());

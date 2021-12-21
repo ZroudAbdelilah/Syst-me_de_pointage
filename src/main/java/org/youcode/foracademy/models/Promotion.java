@@ -6,17 +6,17 @@ public class Promotion {
     private long id_promotion;
     private String name;
     private Date year;
-    private Date start_date;
+    private Date star_date;
     private Date end_date;
 
     public Promotion() {
     }
 
-    public Promotion(long id_promotion, String name, Date year, Date start_date, Date end_date) {
+    public Promotion(long id_promotion, String name, Date year, Date star_date, Date end_date) {
         this.id_promotion = id_promotion;
         this.name = name;
         this.year = year;
-        this.start_date = start_date;
+        this.star_date = star_date;
         this.end_date = end_date;
     }
 
@@ -44,12 +44,12 @@ public class Promotion {
         this.year = year;
     }
 
-    public Date getStart_date() {
-        return start_date;
+    public Date getStar_date() {
+        return star_date;
     }
 
-    public void setStart_date(Date start_date) {
-        this.start_date = start_date;
+    public void setStar_date(Date star_date) {
+        this.star_date = star_date;
     }
 
     public Date getEnd_date() {
@@ -66,7 +66,7 @@ public class Promotion {
                 "id_promotion=" + id_promotion +
                 ", name='" + name + '\'' +
                 ", year=" + year +
-                ", start_date=" + start_date +
+                ", star_date=" + star_date +
                 ", end_date=" + end_date +
                 '}';
     }

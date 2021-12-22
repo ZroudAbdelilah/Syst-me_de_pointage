@@ -1,4 +1,4 @@
-package org.youcode.foracademy.dao.promotion;
+package org.youcode.foracademy.dao.promotionDao;
 
 import org.youcode.foracademy.models.Promotion;
 import org.youcode.foracademy.util.DbConnection;

@@ -1,19 +1,28 @@
 package org.youcode.foracademy.test;
 
-import org.youcode.foracademy.dao.formateurDao.FormateurDao;
-import org.youcode.foracademy.dao.formateurDao.FormateurDaoImp;
-import org.youcode.foracademy.dao.promotion.PromotionDao;
-import org.youcode.foracademy.dao.promotion.PromotionDaoImp;
-import org.youcode.foracademy.dao.specialiterDao.SpecialiterDao;
-import org.youcode.foracademy.dao.specialiterDao.SpecialiterDaoImp;
+import org.youcode.foracademy.dao.classDao.ClassDao;
+import org.youcode.foracademy.dao.classDao.ClassDaoImp;
 import org.youcode.foracademy.models.*;
-import org.youcode.foracademy.util.DbConnection;
+import org.youcode.foracademy.models.Class;
 
-import java.sql.Connection;
 import java.util.Date;
 
 public class App {
     public static void main(String[] args) {
+      /* Class aclass = new Class();
+        aclass.setName_class("JAVA/ANGULAR");
+        aclass.setStart_of_day(new Date(200,10,17));
+        aclass.setEnd_of_day(new Date(200,10,17));
+
+        Specialiter specialiter = new Specialiter();
+        specialiter.setName_specialiter("JAVA");
+        specialiter.setId_specialiter(1);
+
+       aclass.setPromotion(speciality);
+        //System.out.println(classRoom.toString());
+        classRoomDaoImp classRoomDaoImp = new classRoomDaoImp();
+        classRoomDaoImp.saveClassRoom(classRoom);
+        System.out.println(classRoomDaoImp.saveClassRoom(classRoom).toString());
        /* FormateurDao formateurDao =new FormateurDaoImp();
         Formateur formateur = new Formateur (0,"abdelilah","zroud","abdo@gmail.com","1234",06302332323,"M",false,new Role(),new Adress(),new Fabrique(),new Specialiter());
         formateurDao.insert(formateur);//create
@@ -41,7 +50,15 @@ public class App {
         Promotion promotion1 =promotionDao.findById(1);//getone
         System.out.println(promotion1);
         promotionDao.delete(1);*/
+        /*ClassDao classDao =new ClassDaoImp();
+        Class aclass = new Class(1,"java",new Date(200,10,11),new Date(200,10,11),);
+        // promotionDao.insert(promotion);//create
+        //promotionDao.update(promotion);//update
+        //promotionDao.findAll().forEach(System.out::println);//getall
+        Promotion promotion1 =promotionDao.findById(1);//getone
+        System.out.println(promotion1);
+        promotionDao.delete(1);
 
-        System.out.println("succes");
+        System.out.println("succes");*/
     }
 }

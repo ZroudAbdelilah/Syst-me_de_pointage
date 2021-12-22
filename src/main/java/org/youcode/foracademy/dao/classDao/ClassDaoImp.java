@@ -104,7 +104,7 @@ public class ClassDaoImp implements ClassDao {
                 preparedStatement.setString(1, aclass.getName_class());
                 preparedStatement.setDate(2, Utils.getSqlDate(aclass.getStart_of_day()));
                 preparedStatement.setDate(3,Utils.getSqlDate(aclass.getEnd_of_day()));
-                preparedStatement.setObject(4, aclass.getPromotion());
+                preparedStatement.setLong(4, aclass.getPromotion().getId_promotion());
 
                 preparedStatement.executeUpdate();
 
@@ -134,7 +134,7 @@ public class ClassDaoImp implements ClassDao {
                 preparedStatement.setString(1, aclass.getName_class());
                 preparedStatement.setDate(2, Utils.getSqlDate(aclass.getStart_of_day()));
                 preparedStatement.setDate(3,Utils.getSqlDate(aclass.getEnd_of_day()));
-                preparedStatement.setObject(4, aclass.getPromotion());
+                preparedStatement.setLong(4, aclass.getPromotion().getId_promotion());
                 preparedStatement.setLong(5,aclass.getId_class());
                 preparedStatement.executeUpdate();
 

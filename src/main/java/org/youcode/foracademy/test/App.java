@@ -2,6 +2,8 @@ package org.youcode.foracademy.test;
 
 import org.youcode.foracademy.dao.classDao.ClassDao;
 import org.youcode.foracademy.dao.classDao.ClassDaoImp;
+import org.youcode.foracademy.dao.promotionDao.PromotionDao;
+import org.youcode.foracademy.dao.promotionDao.PromotionDaoImp;
 import org.youcode.foracademy.models.*;
 import org.youcode.foracademy.models.Class;
 
@@ -42,8 +44,8 @@ public class App {
        // System.out.println(specialiter1);
           specialiterDao.delete(1);*/
 
-      /*   PromotionDao promotionDao =new PromotionDaoImp();
-        Promotion promotion = new Promotion(1,"hello EDIT 2020",new Date(),new Date(120,10,18),new Date(121,11,10));
+       PromotionDao promotionDao =new PromotionDaoImp();
+          /*Promotion promotion = new Promotion(1,"hello EDIT 2020",new Date(),new Date(120,10,18),new Date(121,11,10));
        // promotionDao.insert(promotion);//create
         //promotionDao.update(promotion);//update
         //promotionDao.findAll().forEach(System.out::println);//getall
@@ -57,8 +59,9 @@ public class App {
         //promotionDao.findAll().forEach(System.out::println);//getall
         Promotion promotion1 =promotionDao.findById(1);//getone
         System.out.println(promotion1);
-        promotionDao.delete(1);
+
 
         System.out.println("succes");*/
+        promotionDao.delete(3);
     }
 }

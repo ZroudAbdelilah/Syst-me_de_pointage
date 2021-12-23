@@ -11,10 +11,10 @@ import java.util.List;
 
 public class SpecialiterDaoImp implements SpecialiterDao {
     @Override
-    public long delete(long id_specialiter){
+    public boolean delete(long id_specialiter){
         Connection con = DbConnection.getConnection();
         if (con == null){
-            return 0;
+            return false;
         }
         String query ="DELETE FROM specialiter WHERE id_specialiter = ? ";
         try(PreparedStatement preparedStatement = con.prepareStatement(query)){
@@ -31,7 +31,7 @@ public class SpecialiterDaoImp implements SpecialiterDao {
                 se.printStackTrace();
             }
         }
-        return 0;
+        return true;
     }
     @Override
     public List<Specialiter> findAll(){
@@ -89,10 +89,10 @@ public class SpecialiterDaoImp implements SpecialiterDao {
         return null;
     }
     @Override
-    public void insert(Specialiter specialiter){
+    public Specialiter insert(Specialiter specialiter){
         Connection con = DbConnection.getConnection();
         if(con == null ){
-            return ;
+            return null ;
         }else if (specialiter.getId_specialiter() == 0) {
           String query =" INSERT INTO specialiter (name_specialiter, description) VALUES (?,?);";
             try (PreparedStatement preparedStatement = con.prepareStatement(query)){
@@ -112,14 +112,14 @@ public class SpecialiterDaoImp implements SpecialiterDao {
                 }
             }
         }
-
+        return specialiter;
 
     }
     @Override
-    public void update(Specialiter specialiter){
+    public Specialiter update(Specialiter specialiter){
         Connection con = DbConnection.getConnection();
         if(con == null ){
-            return ;
+            return null;
         }else if (specialiter.getId_specialiter() > 0){
 
             String query = " UPDATE  specialiter  SET name_specialiter = ?,description = ? WHERE id_specialiter = ? ";
@@ -140,6 +140,6 @@ public class SpecialiterDaoImp implements SpecialiterDao {
                 }
             }
         }
-
+        return specialiter;
     }
 }

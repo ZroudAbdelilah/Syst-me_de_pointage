@@ -6,9 +6,9 @@ import org.youcode.foracademy.models.Promotion;
 import java.util.List;
 
 public interface ClassDao {
-    public long delete(long id);
+    public boolean delete(long id);
     public List<Class> findAll();
     public Class findById(long id);
-    public void insert(Class aclass);
-    public void update(Class aclass);
+    public Class insert(Class aclass);
+    public Class update(Class aclass);
 }

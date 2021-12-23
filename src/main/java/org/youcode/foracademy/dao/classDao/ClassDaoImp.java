@@ -14,10 +14,10 @@ import java.util.List;
 
 public class ClassDaoImp implements ClassDao {
     @Override
-    public long delete(long id_class){
+    public boolean delete(long id_class){
         Connection con = DbConnection.getConnection();
         if (con == null){
-            return 0;
+            return false;
         }
         String query ="DELETE FROM class WHERE id_class = ? ";
         try(PreparedStatement preparedStatement = con.prepareStatement(query)){
@@ -34,7 +34,7 @@ public class ClassDaoImp implements ClassDao {
                 se.printStackTrace();
             }
         }
-        return 0;
+        return true;
     }
     @Override
     public List<Class> findAll(){
@@ -92,10 +92,10 @@ public class ClassDaoImp implements ClassDao {
         return null;
     }
     @Override
-    public void insert(Class aclass){
+    public Class insert(Class aclass){
         Connection con = DbConnection.getConnection();
         if(con == null ){
-            return ;
+            return null;
         }else if (aclass.getId_class() == 0) {
 
             String query =" INSERT INTO class (name_class, ,start_of_date,end_of_date,id_promotion) VALUES (?,?,?,?,?);";
@@ -119,13 +119,13 @@ public class ClassDaoImp implements ClassDao {
             }
         }
 
-
+        return aclass;
     }
     @Override
-    public void update(Class aclass){
+    public Class update(Class aclass){
         Connection con = DbConnection.getConnection();
         if(con == null ){
-            return ;
+            return null;
         }else if (aclass.getId_class() > 0){
 
             String query = " UPDATE  class  SET name_class = ?,start_of_day = ?,end_of_day = ?,id_promotion = ? WHERE id_class = ? ";
@@ -148,7 +148,7 @@ public class ClassDaoImp implements ClassDao {
                 }
             }
         }
-
+        return aclass;
     }
 
 }

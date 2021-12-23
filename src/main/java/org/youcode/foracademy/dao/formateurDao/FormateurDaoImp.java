@@ -1,6 +1,6 @@
 package org.youcode.foracademy.dao.formateurDao;
 
-import org.youcode.foracademy.dao.specialiterDao.SpecialiterDaoImp;
+
 import org.youcode.foracademy.models.*;
 import org.youcode.foracademy.util.DbConnection;
 import org.youcode.foracademy.models.Class;
@@ -14,10 +14,10 @@ import java.util.List;
 
 public class FormateurDaoImp implements FormateurDao {
     @Override
-    public long delete(long id_user){
+    public boolean delete(long id_user){
         Connection con = DbConnection.getConnection();
         if (con == null){
-            return 0;
+            return false;
         }
         String query ="DELETE FROM formateur WHERE id_user = ? ";
         try(PreparedStatement preparedStatement = con.prepareStatement(query)){
@@ -34,7 +34,7 @@ public class FormateurDaoImp implements FormateurDao {
                 se.printStackTrace();
             }
         }
-        return 0;
+        return true;
     }
     @Override
     public List<Formateur> findAll(){
@@ -103,10 +103,10 @@ public class FormateurDaoImp implements FormateurDao {
         return null;
     }
     @Override
-    public void insert(Formateur formateur){
+    public Formateur insert(Formateur formateur){
         Connection con = DbConnection.getConnection();
         if(con == null ){
-            return ;
+            return null ;
         }else if (formateur.getId_user() == 0){
             String query =" INSERT INTO formateur (first_name,last_name,email,password,phone,gander,status_compte,id_role,id_adress,id_fabrique,id_class,id_specialiter VALUES (?,?,?,?,?,?,?,?,?,?,?,?)) ";
             try (PreparedStatement preparedStatement = con.prepareStatement(query)){
@@ -134,15 +134,16 @@ public class FormateurDaoImp implements FormateurDao {
                     throwables.printStackTrace();
                 }
             }
-        }
 
+        }
+        return formateur;
 
     }
     @Override
-    public void update(Formateur formateur){
+    public Formateur update(Formateur formateur){
         Connection con = DbConnection.getConnection();
         if(con == null ){
-            return ;
+            return null;
         }else if (formateur.getId_user()!=0){
             String query =" UPDATE  formateur SET first_name = ?,last_name = ?,email = ?,password = ?,phone = ?,gander = ?,status_compte = ?,id_role = ?,id_adress = ? ,id_event = ? ,id_fabrique = ? ,id_class = ?,id_specialiter = ? WHERE id_user = ? ";
             try (PreparedStatement preparedStatement = con.prepareStatement(query)){
@@ -172,6 +173,6 @@ public class FormateurDaoImp implements FormateurDao {
                 }
             }
         }
-
+        return formateur;
     }
 }

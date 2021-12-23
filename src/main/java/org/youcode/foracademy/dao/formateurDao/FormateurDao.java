@@ -5,11 +5,11 @@ import org.youcode.foracademy.models.Formateur;
 import java.util.List;
 
 public interface FormateurDao  {
-    public long delete(long id);
-    public List<Formateur> findAll();
-    public Formateur findById(long id);
-    public void insert(Formateur formateur);
-    public void update(Formateur formateur);
+    boolean delete(long id);
+    List<Formateur> findAll();
+    Formateur findById(long id);
+    Formateur insert(Formateur formateur);
+    Formateur update(Formateur formateur);
 
 
 }

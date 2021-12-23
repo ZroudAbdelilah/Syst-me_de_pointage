@@ -1,13 +1,14 @@
-package org.youcode.foracademy.dao.classDao;
+package org.youcode.foracademy.services;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ClassDaoImpTest {
+class PromotionServiceTest {
 
     @Test
-    void delete() {
+    void findById() {
+
     }
 
     @Test
@@ -15,14 +16,14 @@ class ClassDaoImpTest {
     }
 
     @Test
-    void findById() {
+    void delete() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void insert() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void update() {
     }
 }

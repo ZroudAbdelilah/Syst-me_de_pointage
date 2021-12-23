@@ -13,10 +13,10 @@ import java.util.List;
 
 public class PromotionDaoImp implements PromotionDao{
     @Override
-    public long delete(long id_promotion){
+    public boolean delete(long id_promotion){
         Connection con = DbConnection.getConnection();
         if (con == null){
-            return 0;
+            return false;
         }
         String query ="DELETE FROM promotion WHERE id_promotion = ? ";
         try(PreparedStatement preparedStatement = con.prepareStatement(query)){
@@ -33,7 +33,7 @@ public class PromotionDaoImp implements PromotionDao{
                 se.printStackTrace();
             }
         }
-        return 0;
+        return true;
     }
     @Override
     public List<Promotion> findAll(){
@@ -90,10 +90,10 @@ public class PromotionDaoImp implements PromotionDao{
         return null;
     }
     @Override
-    public void insert(Promotion promotion){
+    public Promotion insert(Promotion promotion){
         Connection con = DbConnection.getConnection();
         if(con == null ){
-            return ;
+            return null;
         }else if (promotion.getId_promotion() == 0) {
             String query =" INSERT INTO promotion (name, year,star_date,end_date) VALUES (?,?,?,?);";
             try (PreparedStatement preparedStatement = con.prepareStatement(query)){
@@ -115,14 +115,14 @@ public class PromotionDaoImp implements PromotionDao{
                 }
             }
         }
-
+        return promotion;
 
     }
     @Override
-    public void update(Promotion promotion){
+    public Promotion update(Promotion promotion){
         Connection con = DbConnection.getConnection();
         if(con == null ){
-            return ;
+            return null;
         }else if (promotion.getId_promotion() > 0){
 
             String query = " UPDATE  promotion  SET name = ?,year = ?,star_date = ?,end_date = ? WHERE id_promotion = ? ";
@@ -145,6 +145,7 @@ public class PromotionDaoImp implements PromotionDao{
                 }
             }
         }
-
+        return promotion;
     }
+
 }

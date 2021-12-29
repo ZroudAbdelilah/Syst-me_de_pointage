@@ -1,4 +1,4 @@
-package org.youcode.foracademy.dao.studentDao;
+package org.youcode.foracademy.interfaceImp;
 
 
 import org.youcode.foracademy.models.Student;

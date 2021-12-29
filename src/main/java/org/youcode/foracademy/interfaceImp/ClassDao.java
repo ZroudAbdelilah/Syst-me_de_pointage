@@ -1,4 +1,4 @@
-package org.youcode.foracademy.dao.classDao;
+package org.youcode.foracademy.interfaceImp;
 
 import org.youcode.foracademy.models.Class;
 import org.youcode.foracademy.models.Promotion;

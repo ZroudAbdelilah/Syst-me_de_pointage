@@ -1,5 +1,6 @@
-package org.youcode.foracademy.dao.studentDao;
+package org.youcode.foracademy.daoImp;
 
+import org.youcode.foracademy.interfaceImp.StudentDao;
 import org.youcode.foracademy.models.*;
 import org.youcode.foracademy.models.Class;
 import org.youcode.foracademy.util.DbConnection;
@@ -11,7 +12,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
-public class StudentDaoImp implements StudentDao{
+public class StudentDaoImp implements StudentDao {
     @Override
     public boolean delete(long id_user){
         Connection con = DbConnection.getConnection();

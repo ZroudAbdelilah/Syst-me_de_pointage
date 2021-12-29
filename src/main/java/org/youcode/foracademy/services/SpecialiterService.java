@@ -1,6 +1,6 @@
 package org.youcode.foracademy.services;
 
-import org.youcode.foracademy.dao.specialiterDao.SpecialiterDao;
+import org.youcode.foracademy.interfaceImp.SpecialiterDao;
 import org.youcode.foracademy.models.Specialiter;
 
 import java.util.List;

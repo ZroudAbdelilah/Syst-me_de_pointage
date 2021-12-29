@@ -1,4 +1,4 @@
-package org.youcode.foracademy.dao.formateurDao;
+package org.youcode.foracademy.interfaceImp;
 
 import org.youcode.foracademy.models.Formateur;
 

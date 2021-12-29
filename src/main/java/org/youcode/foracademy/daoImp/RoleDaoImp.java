@@ -1,4 +1,4 @@
-package org.youcode.foracademy.dao.roleDao;
+package org.youcode.foracademy.daoImp;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import org.youcode.foracademy.util.DbConnection;
 
 import org.youcode.foracademy.dao.DAO;
 
-public class RoleDaoImp<Role> implements DAO<Role> {
+public class RoleDaoImp<Role> extends DAO<Role> {
 
     public RoleDaoImp() {
     }

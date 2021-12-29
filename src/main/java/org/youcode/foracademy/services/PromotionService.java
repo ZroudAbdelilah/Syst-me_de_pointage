@@ -1,7 +1,6 @@
 package org.youcode.foracademy.services;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
-import org.youcode.foracademy.dao.promotionDao.PromotionDao;
+import org.youcode.foracademy.interfaceImp.PromotionDao;
 import org.youcode.foracademy.models.Promotion;
 
 import java.util.List;

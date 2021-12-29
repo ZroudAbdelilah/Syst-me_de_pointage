@@ -1,6 +1,6 @@
 package org.youcode.foracademy.dao;
 
-import org.youcode.foracademy.dao.roleDao.RoleDaoImp;
+import org.youcode.foracademy.daoImp.RoleDaoImp;
 
 
 /*import com.ycbank.daoImpl.EmployeeImpl;

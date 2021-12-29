@@ -1,4 +1,4 @@
-package org.youcode.foracademy.dao.roleDao;
+package org.youcode.foracademy.interfaceImp;
 
 import org.youcode.foracademy.dao.DAOException.DAOException;
 import org.youcode.foracademy.models.Role;

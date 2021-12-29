@@ -1,6 +1,7 @@
-package org.youcode.foracademy.dao.formateurDao;
+package org.youcode.foracademy.daoImp;
 
 
+import org.youcode.foracademy.interfaceImp.FormateurDao;
 import org.youcode.foracademy.models.*;
 import org.youcode.foracademy.util.DbConnection;
 import org.youcode.foracademy.models.Class;

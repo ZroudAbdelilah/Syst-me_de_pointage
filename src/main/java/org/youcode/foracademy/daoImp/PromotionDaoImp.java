@@ -1,5 +1,6 @@
-package org.youcode.foracademy.dao.promotionDao;
+package org.youcode.foracademy.daoImp;
 
+import org.youcode.foracademy.interfaceImp.PromotionDao;
 import org.youcode.foracademy.models.Promotion;
 import org.youcode.foracademy.util.DbConnection;
 import org.youcode.foracademy.util.Utils;
@@ -11,7 +12,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
-public class PromotionDaoImp implements PromotionDao{
+public class PromotionDaoImp implements PromotionDao {
     @Override
     public boolean delete(long id_promotion){
         Connection con = DbConnection.getConnection();

@@ -1,4 +1,4 @@
-package org.youcode.foracademy.dao.specialiterDao;
+package org.youcode.foracademy.interfaceImp;
 
 
 import org.youcode.foracademy.models.Specialiter;

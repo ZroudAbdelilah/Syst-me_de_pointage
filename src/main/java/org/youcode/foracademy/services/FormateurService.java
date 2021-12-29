@@ -1,7 +1,7 @@
 package org.youcode.foracademy.services;
 
 
-import org.youcode.foracademy.dao.formateurDao.FormateurDao;
+import org.youcode.foracademy.interfaceImp.FormateurDao;
 import org.youcode.foracademy.models.Formateur;
 
 import java.util.List;

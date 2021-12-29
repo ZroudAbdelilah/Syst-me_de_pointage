@@ -1,3 +1,4 @@
+
 package org.youcode.foracademy.models;
 
 public class Role {
@@ -17,7 +18,7 @@ public class Role {
     }
 
     public long getId_role() {
-        return id_role;
+        return this.id_role;
     }
 
     public void setId_role(long id_role) {
@@ -25,7 +26,7 @@ public class Role {
     }
 
     public String getName_role() {
-        return name_role;
+        return this.name_role;
     }
 
     public void setName_role(String name_role) {
@@ -33,7 +34,7 @@ public class Role {
     }
 
     public String getDescription_role() {
-        return description_role;
+        return this.description_role;
     }
 
     public void setDescription_role(String description_role) {
@@ -41,20 +42,14 @@ public class Role {
     }
 
     public boolean isStatus_role() {
-        return status_role;
+        return this.status_role;
     }
 
     public void setStatus_role(boolean status_role) {
         this.status_role = status_role;
     }
 
-    @Override
     public String toString() {
-        return "Role{" +
-                "id_role=" + id_role +
-                ", name_role='" + name_role + '\'' +
-                ", description_role='" + description_role + '\'' +
-                ", status_role=" + status_role +
-                '}';
+        return "Role{id_role=" + this.id_role + ", name_role='" + this.name_role + '\'' + ", description_role='" + this.description_role + '\'' + ", status_role=" + this.status_role + '}';
     }
 }

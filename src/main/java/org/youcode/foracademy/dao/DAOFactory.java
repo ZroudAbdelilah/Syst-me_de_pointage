@@ -1,6 +1,6 @@
 package org.youcode.foracademy.dao;
 
-import org.youcode.foracademy.daoImp.RoleDaoImp;
+
 
 
 /*import com.ycbank.daoImpl.EmployeeImpl;
@@ -14,7 +14,9 @@ import com.ycbank.model.Coach;
 import com.ycbank.model.Employee;
 import com.ycbank.model.Person;
 import com.ycbank.model.Student;*/
+
 import org.youcode.foracademy.models.Role;
+import org.youcode.foracademy.daoImp.RoleDaoImp;
 
 
 public class DAOFactory {
@@ -30,11 +32,16 @@ public class DAOFactory {
         return new CoachImpl();
     }*/
 
+    public static RoleDaoImp<Role> getRoleImpl(){ return new RoleDaoImp<Role>(); }
 
 
-/*interface*/
+
+
+    /*interface*/
 /*
     public static DAO<Admin> getAdminImpl(){ return new AdminImpl(); }
 */
-    public static RoleDaoImp<Role> getRoleImpl(){ return new RoleDaoImp<Role>(); }
+/*    public static IDAO<Person> getIPecrsonImpl(){ return new IPersonImpl(); }
+    public static IDAO<Student> getIStudentImpl(){ return new IStudentImpl(); }*/
+
 }

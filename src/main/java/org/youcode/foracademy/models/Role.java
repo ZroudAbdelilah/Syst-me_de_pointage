@@ -41,7 +41,7 @@ public class Role {
         this.description_role = description_role;
     }
 
-    public boolean isStatus_role() {
+    public boolean getStatus_role() {
         return this.status_role;
     }
 

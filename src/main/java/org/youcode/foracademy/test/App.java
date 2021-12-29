@@ -1,10 +1,46 @@
 package org.youcode.foracademy.test;
 
-import org.youcode.foracademy.interfaceImp.PromotionDao;
-import org.youcode.foracademy.daoImp.PromotionDaoImp;
+import org.youcode.foracademy.dao.DAOFactory;
+import org.youcode.foracademy.interfaces.IntDAO;
+import org.youcode.foracademy.models.Role;
+
+import java.util.Objects;
 
 public class App {
     public static void main(String[] args) {
+        IntDAO<Role> roleOp = DAOFactory.getRoleImpl();
+        Role role1 = new Role(1L,
+                "role1",
+                "roledescription1",
+                true
+        );
+
+        role1 = roleOp.create(role1);
+        if(!Objects.isNull(role1))
+            System.out.println("le role est "+role1.getName_role()+" son status est "+role1.getStatus_role());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       /* Class aclass = new Class();
         aclass.setName_class("JAVA/ANGULAR");
         aclass.setStart_of_day(new Date(200,10,17));
@@ -38,7 +74,9 @@ public class App {
        // System.out.println(specialiter1);
           specialiterDao.delete(1);*/
 
+/*
        PromotionDao promotionDao =new PromotionDaoImp();
+*/
           /*Promotion promotion = new Promotion(1,"hello EDIT 2020",new Date(),new Date(120,10,18),new Date(121,11,10));
        // promotionDao.insert(promotion);//create
         //promotionDao.update(promotion);//update
@@ -56,6 +94,7 @@ public class App {
 
 
         System.out.println("succes");*/
-        promotionDao.delete(3);
+        /*   promotionDao.delete(3);
+         */
     }
 }

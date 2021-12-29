@@ -1,7 +1,6 @@
 package org.youcode.foracademy.interfaces;
 
 import org.youcode.foracademy.util.DbConnection;
-
 import java.sql.Connection;
 
 public interface IntDAO<T> {

@@ -15,6 +15,7 @@ import com.ycbank.model.Employee;
 import com.ycbank.model.Person;
 import com.ycbank.model.Student;*/
 
+import org.youcode.foracademy.interfaceImp.RoleDao;
 import org.youcode.foracademy.models.Role;
 import org.youcode.foracademy.daoImp.RoleDaoImp;
 
@@ -32,7 +33,7 @@ public class DAOFactory {
         return new CoachImpl();
     }*/
 
-    public static RoleDaoImp<Role> getRoleImpl(){ return new RoleDaoImp<Role>(); }
+    public static RoleDao getRoleImpl(){ return new RoleDao(); }
 
 
 

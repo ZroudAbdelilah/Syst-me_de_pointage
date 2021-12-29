@@ -30,16 +30,73 @@ public class RoleDao implements IntDAO<Role>  {
         return role;
     }
 
+
+
+
+
+    /* READ */
     @Override
-    public Role read(long id) {
-        return null;
+    public Role read(long id_role) {
+        Role role= null;
+        try {
+            ResultSet result = this .connect.createStatement(
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE
+            ).executeQuery(
+                    "SELECT * FROM roles" + id_role);
+            if(result.first())
+                role = new Role(
+                        id_role,
+/*
+                        result.getLong("id_role"),
+*/
+                        result.getString("name_role"),
+                        result.getString("description_role"),
+                        result.getBoolean("status_role")
+                );
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return role;
     }
 
+
+
+
+
+
+    /* UPDATE */
+
     @Override
-    public Role update(Role obj) {
-        return null;
+    public Role update(Role role) {
+        try {
+
+            PreparedStatement roleStatement = this.connect.prepareStatement(
+                    "UPDATE role set name_role = ? ," +
+                            "description_role = ?," +
+                            "status_role = ?," +
+                            " WHERE id_role = ?");
+
+            roleStatement.setString(1, role.getName_role());
+            roleStatement.setString(2, role.getDescription_role());
+            roleStatement.setBoolean(3, role.getStatus_role());
+            role = this.read(role.getId_role());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return role;
     }
 
+
+
+
+
+
+
+
+    /* DELETE */
     @Override
     public void delete(Role role) {
         try {

@@ -43,6 +43,7 @@ public class FormateurDaoImp implements FormateurDao {
         if (con == null){
             return null;
         }
+
         List<Formateur> formateurs =new LinkedList<>();
         String query ="SELECT * FROM formateur";
         try (PreparedStatement preparedStatement = con.prepareStatement(query)){

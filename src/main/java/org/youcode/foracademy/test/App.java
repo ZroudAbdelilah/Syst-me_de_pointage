@@ -16,34 +16,28 @@ public class App {
                 true
         );
 
-        Role role2 = new Role(2L,
-                "Student",
+        Role role2 = new Role(1L,
+                "modifini",
                 "roledescription2",
-                true
-        );
-
-        Role roleUpdated = new Role(19,
-                "roleUpdated",
-                "roleUpdated",
-                true
+                false
         );
 
 
 
  /*       role1 = roleOp.create(role1);
-        role2 = roleOp.create(role2);
         role1.setName_role("Admin");*/
 
 
         List fetchAllRoles = (List) roleOp.readAll();
         Role fetchRoleById = roleOp.read(10L);
+/*
         role1 = roleOp.update(role2);
+*/
+        roleOp.delete(role2);
 
-
-
-        if(!Objects.isNull(role1) && !Objects.isNull(role2))
-        System.out.println("le role est "+role1.getName_role()+" son status est ."+role1.getStatus_role());
-        System.out.println("le role est "+role2.getName_role()+" son status est ."+role2.getStatus_role());
+        if (!Objects.isNull(role1) && !Objects.isNull(role2))
+            System.out.println("le role est " + role1.getName_role() + " son status est ." + role1.getStatus_role());
+        System.out.println("le role est " + role2.getName_role() + " son status est ." + role2.getStatus_role());
    /*     System.out.println( fetchAllRoles );
         System.out.println("the searched role is " + fetchRoleById);*/
 

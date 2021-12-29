@@ -114,19 +114,19 @@ public class RoleDao implements IntDAO<Role> {
     /* DELETE */
     @Override
     public void delete(Role role) {
-        try {
-            Connection connection = DbConnection.getConnection();
-            if (role.getId_role() != 0) {
-                PreparedStatement statement = connection.prepareStatement("update roles set status_role = ? where id_role = ?;");
-                statement.setBoolean(1, false);
-                statement.setLong(2, role.getId_role());
-                statement.execute();
-            }
-
-            System.out.println("Le role " + role.getId_role() + " a été desactiver avec succèes.");
-        } catch (SQLException var4) {
-            var4.printStackTrace();
+        try(
+                PreparedStatement roleStatement = this.connect.prepareStatement(
+                        "DELETE FROM roles " +
+                                "WHERE id_role = ?");
+                ) {
+            roleStatement.setLong(1, role.getId_role());
+            roleStatement.executeUpdate();
+            } catch (SQLException e) {
+            e.printStackTrace();
             System.out.println(role.getId_role() + "non desactiver");
+
+        }
+
+        System.out.println("Le role " + role.getId_role() + " a été desactiver avec succèes.");
         }
     }
-}

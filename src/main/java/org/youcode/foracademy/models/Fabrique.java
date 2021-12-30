@@ -5,15 +5,25 @@ public class Fabrique {
     private String name_fabrique;
     private Pointeur pointeur;
     private Adress adress;
+    private Boolean status_fabrique;
+
 
     public Fabrique() {
     }
 
-    public Fabrique(long id_fabrique, String name_fabrique, Pointeur pointeur, Adress adress) {
+    public Fabrique(long id_fabrique, String name_fabrique, Pointeur pointeur, Adress adress, Boolean status_fabrique) {
         this.id_fabrique = id_fabrique;
         this.name_fabrique = name_fabrique;
         this.pointeur = pointeur;
         this.adress = adress;
+        this.status_fabrique = status_fabrique;
+
+    }
+
+    public Fabrique( String name_fabrique, Boolean status_fabrique) {
+        this.name_fabrique = name_fabrique;
+        this.status_fabrique = status_fabrique;
+
     }
 
     public long getId_fabrique() {
@@ -40,7 +50,11 @@ public class Fabrique {
         this.pointeur = pointeur;
     }
 
-    public Adress getAdress() {
+    public Boolean getStatus_fabrique() {
+        return status_fabrique;
+    }
+
+    public Adress getadress() {
         return adress;
     }
 

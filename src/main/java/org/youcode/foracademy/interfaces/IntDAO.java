@@ -7,7 +7,6 @@ import java.util.List;
 public interface IntDAO<T> {
 
      Connection connect = DbConnection.getConnection();
-
       T create(T obj);
       List readAll();
       T read(long id);

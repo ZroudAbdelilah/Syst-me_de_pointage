@@ -1,6 +1,6 @@
 package org.youcode.foracademy.daoImp;
 
-import org.youcode.foracademy.interfaceImp.SpecialiterDao;
+import org.youcode.foracademy.interfaces.SpecialiterDao;
 import org.youcode.foracademy.models.*;
 import org.youcode.foracademy.util.DbConnection;
 import java.sql.Connection;

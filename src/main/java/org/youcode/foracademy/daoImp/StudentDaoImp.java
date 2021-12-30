@@ -1,6 +1,6 @@
 package org.youcode.foracademy.daoImp;
 
-import org.youcode.foracademy.interfaceImp.StudentDao;
+import org.youcode.foracademy.interfaces.StudentDao;
 import org.youcode.foracademy.models.*;
 import org.youcode.foracademy.models.Class;
 import org.youcode.foracademy.util.DbConnection;

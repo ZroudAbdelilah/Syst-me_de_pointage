@@ -1,4 +1,4 @@
-package org.youcode.foracademy.interfaceImp;
+package org.youcode.foracademy.interfaces;
 
 import org.youcode.foracademy.models.Promotion;
 

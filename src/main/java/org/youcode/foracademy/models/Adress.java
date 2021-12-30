@@ -18,6 +18,12 @@ public class Adress {
         this.code_postal = code_postal;
 
     }
+    public Adress(String country, String region, String city, Integer code_postal) {
+        this.country = country;
+        this.region = region;
+        this.city = city;
+        this.code_postal = code_postal;
+    }
 
     public long getId_adress() {
         return id_adress;

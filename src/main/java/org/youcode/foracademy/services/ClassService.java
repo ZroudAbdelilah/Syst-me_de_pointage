@@ -1,6 +1,6 @@
 package org.youcode.foracademy.services;
 
-import org.youcode.foracademy.interfaceImp.ClassDao;
+import org.youcode.foracademy.interfaces.ClassDao;
 
 import org.youcode.foracademy.models.Class;
 

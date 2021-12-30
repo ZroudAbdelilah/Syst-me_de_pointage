@@ -1,6 +1,6 @@
 package org.youcode.foracademy.services;
 
-import org.youcode.foracademy.interfaceImp.PromotionDao;
+import org.youcode.foracademy.interfaces.PromotionDao;
 import org.youcode.foracademy.models.Promotion;
 
 import java.util.List;

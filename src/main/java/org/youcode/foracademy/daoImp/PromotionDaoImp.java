@@ -1,6 +1,6 @@
 package org.youcode.foracademy.daoImp;
 
-import org.youcode.foracademy.interfaceImp.PromotionDao;
+import org.youcode.foracademy.interfaces.PromotionDao;
 import org.youcode.foracademy.models.Promotion;
 import org.youcode.foracademy.util.DbConnection;
 import org.youcode.foracademy.util.Utils;

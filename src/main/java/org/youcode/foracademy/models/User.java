@@ -16,6 +16,21 @@ public class User {
     public User() {
     }
 
+
+
+    public User( String first_name, String last_name, String email, String password, long phone, String gander, boolean status_compte, Role role, Adress adress,  Fabrique fabrique) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.gander = gander;
+        this.status_compte = status_compte;
+        this.role = role;
+        this.adress = adress;
+        this.fabrique = fabrique;
+    }
+
     public User(long id_user, String first_name, String last_name, String email, String password, long phone, String gander, boolean status_compte, Role role, Adress adress,  Fabrique fabrique) {
         this.id_user = id_user;
         this.first_name = first_name;
@@ -28,6 +43,7 @@ public class User {
         this.role = role;
         this.adress = adress;
         this.fabrique = fabrique;
+
     }
 
     public long getId_user() {

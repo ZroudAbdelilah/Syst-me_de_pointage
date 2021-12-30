@@ -1,6 +1,9 @@
 package org.youcode.foracademy.interfaceImp;
 
 import org.youcode.foracademy.interfaces.IntDAO;
+import org.youcode.foracademy.models.Adress;
+import org.youcode.foracademy.models.Fabrique;
+import org.youcode.foracademy.models.Role;
 import org.youcode.foracademy.models.User;
 
 import java.sql.PreparedStatement;
@@ -15,7 +18,13 @@ public class UserDao implements IntDAO<User> {
     @Override
     public User create(User user) {
         try (PreparedStatement prepare = this.connect.prepareStatement(
-                "INSERT INTO users (first_name,last_name,email,password,phone,gander,status_compte) " +
+                "INSERT INTO users (first_name," +
+                        "last_name," +
+                        "email," +
+                        "password," +
+                        "phone," +
+                        "gander," +
+                        "status_compte) " +
                         "VALUES(?,?,?,?,?,?,?)");
         ) {
             prepare.setString(1, user.getFirst_name());
@@ -44,7 +53,9 @@ public class UserDao implements IntDAO<User> {
             users = new ArrayList();
             while (result.next()) {
                 User user = new User(
+/*
                         result.getLong("id_user"),
+*/
                         result.getString("first_name"),
                         result.getString("last_name"),
                         result.getString("email"),
@@ -52,9 +63,9 @@ public class UserDao implements IntDAO<User> {
                         result.getLong("phone"),
                         result.getString("gander"),
                         result.getBoolean("status_compte"),
-                        result.getLong("id_role"),
-                        result.getLong("id_adress"),
-                        result.getLong("id_fabrique")
+                        (Role)result.getObject("id_role"),
+                        (Adress)result.getObject("id_adress"),
+                        (Fabrique)result.getObject("id_fabrique")
                 );
                 users.add(user);
 
@@ -62,29 +73,36 @@ public class UserDao implements IntDAO<User> {
         } catch (SQLException se) {
             se.printStackTrace();
         }
-        return roles;
+        return users;
     }
 
     /* READ BY ID*/
     @Override
-    public Role read(long id) {
-        Role role = null;
+    public User read(long id) {
+        User user = null;
         try (
                 ResultSet result = this.connect.createStatement().executeQuery(
-                        "SELECT * FROM roles WHERE id_role = " + id);
+                        "SELECT * FROM users WHERE id_user = " + id);
         ) {
             if (result.next()) {
-                role = new Role(id,
-                        result.getString("name_role"),
-                        result.getString("description_role"),
-                        result.getBoolean("status_role"));
+                user = new User(id,
+                        result.getString("first_name"),
+                        result.getString("last_name"),
+                        result.getString("email"),
+                        result.getString("password"),
+                        result.getLong("phone"),
+                        result.getString("gander"),
+                        result.getBoolean("status_compte"),
+                        (Role)result.getObject("id_role"),
+                        (Adress)result.getObject("id_adress"),
+                        (Fabrique)result.getObject("id_fabrique"));
 
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return role;
+        return user;
     }
 
 
@@ -95,48 +113,57 @@ public class UserDao implements IntDAO<User> {
     /* UPDATE */
 
     @Override
-    public Role update(Role role) {
+    public User update(User user) {
         try (
-                PreparedStatement roleStatement = this.connect.prepareStatement(
-                        "UPDATE roles set " +
-                                "name_role = ? ," +
-                                "description_role = ?," +
-                                "status_role = ? " +
-                                "WHERE id_role = ? ");
+                PreparedStatement userStatement = this.connect.prepareStatement(
+                        "UPDATE users set " +
+                                "first_name = ? ," +
+                                "last_name = ?," +
+                                "email = ? , " +
+                                "phone = ? , " +
+                                "gander = ? , " +
+                                "status_compte = ? " +
+                                "WHERE id_user = ? ");
         ) {
 
-            roleStatement.setString(1, role.getName_role());
-            roleStatement.setString(2, role.getDescription_role());
-            roleStatement.setBoolean(3, role.getStatus_role());
-            roleStatement.setLong(4, role.getId_role());
+            userStatement.setString(1, user.getFirst_name());
+            userStatement.setString(2, user.getLast_name());
+            userStatement.setString(3, user.getEmail());
+            userStatement.setLong(4, user.getPhone());
+            userStatement.setString(5, user.getGander());
+            userStatement.setBoolean(6, user.isStatus_compte());
+            userStatement.setLong(7, user.getId_user());
 
-            roleStatement.executeUpdate();
+            userStatement.executeUpdate();
 
-            role = this.read(role.getId_role());
+            user = this.read(user.getId_user());
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return role;
+        return user;
     }
 
 
     /* DELETE */
     @Override
-    public void delete(Role role) {
+    public User delete(User user) {
         try(
-                PreparedStatement roleStatement = this.connect.prepareStatement(
-                        "DELETE FROM roles " +
-                                "WHERE id_role = ?");
+                PreparedStatement userStatement = this.connect.prepareStatement(
+                        "UPDATE users SET " +
+                                "status_compte = ? "+
+                        "WHERE id_user = ? ");
         ) {
-            roleStatement.setLong(1, role.getId_role());
-            roleStatement.executeUpdate();
+            userStatement.setBoolean(1, false);
+            userStatement.setLong(2, user.getId_user());
+            userStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println(role.getId_role() + "non desactiver");
+            System.out.println(user.getId_user() + "non desactiver");
 
         }
 
-        System.out.println("Le role " + role.getId_role() + " a été desactiver avec succèes.");
+        System.out.println("L'utilisateur " + user.getId_user() + " a été desactiver avec succèes.");
+        return user;
     }
 
 }

@@ -2,6 +2,7 @@ package org.youcode.foracademy.interfaceImp;
 
 import org.youcode.foracademy.interfaces.IntDAO;
 import org.youcode.foracademy.models.Role;
+import org.youcode.foracademy.models.User;
 import org.youcode.foracademy.util.DbConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -112,20 +113,23 @@ public class RoleDao implements IntDAO<Role> {
 
     /* DELETE */
     @Override
-    public void delete(Role role) {
-        try(
+    public Role delete(Role role) {
+        try (
                 PreparedStatement roleStatement = this.connect.prepareStatement(
-                        "DELETE FROM roles " +
-                                "WHERE id_role = ?");
-                ) {
-            roleStatement.setLong(  1, role.getId_role());
+                        "UPDATE users SET " +
+                                "status_compte = ? " +
+                                "WHERE id_user = ? ");
+        ) {
+            roleStatement.setBoolean(1, role.getStatus_role());
+            roleStatement.setLong(2, role.getId_role());
             roleStatement.executeUpdate();
-            } catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             System.out.println(role.getId_role() + "non desactiver");
 
         }
 
         System.out.println("Le role " + role.getId_role() + " a été desactiver avec succèes.");
-        }
+        return role;
     }
+}

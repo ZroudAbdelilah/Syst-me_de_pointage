@@ -3,6 +3,7 @@ package org.youcode.foracademy.test;
 import org.youcode.foracademy.dao.DAOFactory;
 import org.youcode.foracademy.interfaces.IntDAO;
 import org.youcode.foracademy.models.Role;
+import org.youcode.foracademy.models.User;
 
 import java.util.List;
 import java.util.Objects;
@@ -29,9 +30,9 @@ public class App {
 
 
         List fetchAllRoles = (List) roleOp.readAll();
-        Role fetchRoleById = roleOp.read(10L);
+        Role fetchRoleById = roleOp.read(2L);
 /*
-        role1 = roleOp.update(role2);
+        role1 = fetchRoleById;
 */
         roleOp.delete(role2);
 
@@ -48,11 +49,27 @@ public class App {
 
 
 
+        IntDAO<User> userOp = DAOFactory.getUserImpl();
+        User user1 = new User(
+                "Yasser",
+                "JEE",
+                "test@test.fr",
+                "password",
+                0634437444,
+                "Homme",
+                true,
+                role1,
+                null,
+                null
+        );
+        User userTobeDeleted = userOp.read(3);
 
 
+/*
+    user1 = userOp.create(user1);
+*/
 
-
-
+        userTobeDeleted = userOp.delete(userTobeDeleted);
 
 
 

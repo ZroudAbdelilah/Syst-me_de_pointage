@@ -1,52 +1,62 @@
 package org.youcode.foracademy.interfaceImp;
 
 import org.youcode.foracademy.interfaces.IntDAO;
-import org.youcode.foracademy.models.Role;
-import org.youcode.foracademy.util.DbConnection;
-import java.sql.Connection;
+import org.youcode.foracademy.models.User;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class RoleDao implements IntDAO<Role> {
+public class UserDao implements IntDAO<User> {
 
     /* CREATE */
     @Override
-    public Role create(Role role) {
+    public User create(User user) {
         try (PreparedStatement prepare = this.connect.prepareStatement(
-                "INSERT INTO roles (name_role,description_role,status_role) VALUES(?,?,?)");
+                "INSERT INTO users (first_name,last_name,email,password,phone,gander,status_compte) " +
+                        "VALUES(?,?,?,?,?,?,?)");
         ) {
-            prepare.setString(1, role.getName_role());
-            prepare.setString(2, role.getDescription_role());
-            prepare.setBoolean(3, role.getStatus_role());
+            prepare.setString(1, user.getFirst_name());
+            prepare.setString(2, user.getLast_name());
+            prepare.setString(3, user.getEmail());
+            prepare.setString(4, user.getPassword());
+            prepare.setLong(5, user.getPhone());
+            prepare.setString(6, user.getGander());
+            prepare.setBoolean(7, user.isStatus_compte());
             prepare.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return role;
+        return user;
     }
 
 
     /* READ ALL*/
     @Override
     public List readAll() {
-        List roles = null;
+        List users = null;
         try (
                 ResultSet result = this.connect.createStatement().executeQuery(
-                        "SELECT * FROM roles");
+                        "SELECT * FROM users");
         ) {
-            roles = new ArrayList();
+            users = new ArrayList();
             while (result.next()) {
-                Role role = new Role(
+                User user = new User(
+                        result.getLong("id_user"),
+                        result.getString("first_name"),
+                        result.getString("last_name"),
+                        result.getString("email"),
+                        result.getString("password"),
+                        result.getLong("phone"),
+                        result.getString("gander"),
+                        result.getBoolean("status_compte"),
                         result.getLong("id_role"),
-                        result.getString("name_role"),
-                        result.getString("description_role"),
-                        result.getBoolean("status_role")
+                        result.getLong("id_adress"),
+                        result.getLong("id_fabrique")
                 );
-                roles.add(role);
+                users.add(user);
 
             }
         } catch (SQLException se) {
@@ -117,15 +127,16 @@ public class RoleDao implements IntDAO<Role> {
                 PreparedStatement roleStatement = this.connect.prepareStatement(
                         "DELETE FROM roles " +
                                 "WHERE id_role = ?");
-                ) {
-            roleStatement.setLong(  1, role.getId_role());
+        ) {
+            roleStatement.setLong(1, role.getId_role());
             roleStatement.executeUpdate();
-            } catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             System.out.println(role.getId_role() + "non desactiver");
 
         }
 
         System.out.println("Le role " + role.getId_role() + " a été desactiver avec succèes.");
-        }
     }
+
+}

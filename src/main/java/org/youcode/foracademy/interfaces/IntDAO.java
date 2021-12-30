@@ -1,5 +1,6 @@
 package org.youcode.foracademy.interfaces;
 
+import org.youcode.foracademy.models.Role;
 import org.youcode.foracademy.util.DbConnection;
 import java.sql.Connection;
 import java.util.List;

@@ -31,6 +31,8 @@ public class DAOFactory {
     public static IntDAO<Fabrique> getFabriqueImpl(){ return new FabriqueDao(); }
     public static IntDAO<Pointer> getPointerImpl(){ return new PointerDao(); }
     public static IntDAO<Pointeur> getPointeurImpl(){ return new PointeurDao(); }
+    public static IntDAO<Event> getEventImpl(){ return new EventDao(); }
+
 
 
 

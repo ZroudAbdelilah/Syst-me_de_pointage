@@ -4,6 +4,7 @@ import org.youcode.foracademy.interfaces.IntDAO;
 import org.youcode.foracademy.models.Pointer;
 import org.youcode.foracademy.models.Pointeur;
 import org.youcode.foracademy.models.User;
+import org.youcode.foracademy.util.Utils;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -23,8 +24,8 @@ public class PointerDao implements IntDAO<Pointer> {
                         "go_date " +
                         "VALUES(?,?)");
         ) {
-            prepare.setDate(1, (Date) pointer.getArrival_date());
-            prepare.setDate(2, (Date) pointer.getDo_date());
+            prepare.setDate(1, Utils.getSqlDate(pointer.getArrival_date()));
+            prepare.setDate(2, Utils.getSqlDate(pointer.getDo_date()));
             prepare.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -103,8 +104,8 @@ public class PointerDao implements IntDAO<Pointer> {
                                 "WHERE id_pointer = ? ");
         ) {
 
-            prepare.setDate(1, (Date) pointer.getArrival_date());
-            prepare.setDate(2, (Date) pointer.getDo_date());
+            prepare.setDate(1, Utils.getSqlDate(pointer.getArrival_date()));
+            prepare.setDate(2, Utils.getSqlDate(pointer.getDo_date()));
             prepare.executeUpdate();
 
             pointer = this.read(pointer.getId_pointer());

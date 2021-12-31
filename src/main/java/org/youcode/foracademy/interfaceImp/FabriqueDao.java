@@ -118,14 +118,14 @@ public class FabriqueDao implements IntDAO<Fabrique>{
     @Override
     public Fabrique delete(Fabrique fabrique) {
         try (
-                PreparedStatement userStatement = this.connect.prepareStatement(
+                PreparedStatement fabriqueStatement = this.connect.prepareStatement(
                         "UPDATE fabrique SET " +
                                 "status_fabrique = ? " +
                                 "WHERE id_fabrique = ? ");
         ) {
-            userStatement.setBoolean(1, false);
-            userStatement.setLong(2, fabrique.getId_fabrique());
-            userStatement.executeUpdate();
+            fabriqueStatement.setBoolean(1, false);
+            fabriqueStatement.setLong(2, fabrique.getId_fabrique());
+            fabriqueStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println(fabrique.getId_fabrique() + "non desactiver");

@@ -7,15 +7,35 @@ public class Event {
     private String name_event;
     private Date start_date;
     private Date end_date;
+    private Boolean status_event;
+
 
     public Event() {
     }
 
-    public Event(int id_event, String name_event, Date start_date, Date end_date) {
+    public Event(int id_event, String name_event, Date start_date, Date end_date, Boolean status_event) {
         this.id_event = id_event;
         this.name_event = name_event;
         this.start_date = start_date;
         this.end_date = end_date;
+        this.status_event = status_event;
+
+    }
+
+    public Event(String name_event, Date start_date, Date end_date, Boolean status_event) {
+        this.name_event = name_event;
+        this.start_date = start_date;
+        this.end_date = end_date;
+        this.status_event = status_event;
+
+    }
+
+    public Boolean getStatus_event() {
+        return status_event;
+    }
+
+    public void setStatus_event(Boolean status_event) {
+        this.status_event = status_event;
     }
 
     public long getId_event() {

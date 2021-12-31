@@ -5,14 +5,10 @@ package org.youcode.foracademy.dao;
 
 
 
-import org.youcode.foracademy.interfaceImp.AdressDao;
-import org.youcode.foracademy.interfaceImp.UserDao;
+import org.youcode.foracademy.interfaceImp.*;
 import org.youcode.foracademy.interfaces.IntDAO;
-import org.youcode.foracademy.models.Adress;
-import org.youcode.foracademy.models.Role;
-import org.youcode.foracademy.interfaceImp.RoleDao;
+import org.youcode.foracademy.models.*;
 import org.youcode.foracademy.daoImp.RoleDaoImp;
-import org.youcode.foracademy.models.User;
 
 
 public class DAOFactory {
@@ -32,6 +28,11 @@ public class DAOFactory {
     public static IntDAO<Role> getRoleImpl(){ return new RoleDao(); }
     public static IntDAO<User> getUserImpl(){ return new UserDao(); }
     public static IntDAO<Adress> getAdressImpl(){ return new AdressDao(); }
+    public static IntDAO<Fabrique> getFabriqueImpl(){ return new FabriqueDao(); }
+    public static IntDAO<Pointer> getPointerImpl(){ return new PointerDao(); }
+    public static IntDAO<Pointeur> getPointeurImpl(){ return new PointeurDao(); }
+
+
 
 
 

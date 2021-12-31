@@ -5,6 +5,7 @@ package org.youcode.foracademy.dao;
 
 
 
+import org.youcode.foracademy.interfaceImp.AdminDao;
 import org.youcode.foracademy.interfaceImp.*;
 import org.youcode.foracademy.interfaces.IntDAO;
 import org.youcode.foracademy.models.*;
@@ -32,6 +33,8 @@ public class DAOFactory {
     public static IntDAO<Pointer> getPointerImpl(){ return new PointerDao(); }
     public static IntDAO<Pointeur> getPointeurImpl(){ return new PointeurDao(); }
     public static IntDAO<Event> getEventImpl(){ return new EventDao(); }
+    public static IntDAO<Admin> getAdminImpl(){ return new AdminDao(); }
+
 
 
 

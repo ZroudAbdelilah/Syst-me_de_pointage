@@ -57,6 +57,7 @@ class FormateurServiceTest {
 
 
         Formateur formateur = new Formateur(0,"abdelilah","zr","abdelilah.zr@gmail.com","133214124",06232323232,"M",true,role,adress,fabrique,aclass,specialiter);
+        assertInstanceOf(Formateur.class,formateurService.insert(formateur));
     }
 
     @Test
@@ -86,5 +87,6 @@ class FormateurServiceTest {
 
 
         Formateur formateur = new Formateur(1,"abdelilahtestupdate","zr","abdelilah.zr@gmail.com","133214124",06232323232,"M",true,role,adress,fabrique,aclass,specialiter);
+        assertInstanceOf(Formateur.class,formateurService.update(formateur));
     }
 }

@@ -1,5 +1,7 @@
 package org.youcode.foracademy.dao.studentDao;
 
+import org.youcode.foracademy.dao.classDao.ClassDaoImp;
+import org.youcode.foracademy.dao.specialiterDao.SpecialiterDaoImp;
 import org.youcode.foracademy.models.*;
 import org.youcode.foracademy.models.Class;
 import org.youcode.foracademy.util.DbConnection;
@@ -46,11 +48,11 @@ public class StudentDaoImp implements StudentDao{
         try (PreparedStatement preparedStatement = con.prepareStatement(query)){
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
-                Role role = (Role)resultSet.getObject("Role");
-                Adress adress = (Adress) resultSet.getObject("Adress");
-                Fabrique fabrique = (Fabrique) resultSet.getObject("Fabrique");
-                org.youcode.foracademy.models.Class aclass = (org.youcode.foracademy.models.Class) resultSet.getObject("Class");
-                Specialiter specialiter = (Specialiter) resultSet.getObject("Specialiter");
+                Role role = new RoleDaoImp().findById(resultSet.getLong("id_role"));
+                Adress adress = new AdressDaoImp().findById(resultSet.getLong("id_adress")) ;
+                Fabrique fabrique = new FabriqueDaoImp().finById(resultSet.getLong("id_fabrique"));
+                Specialiter specialiter = new SpecialiterDaoImp().findById(resultSet.getLong("id_specialiter"));
+                Class aclass = new ClassDaoImp().findById(resultSet.getLong("id_class")) ;
                 Student student = new Student(resultSet.getLong("id_user"),resultSet.getString("first_name"),resultSet.getString("last_name"),resultSet.getString("email"),resultSet.getString("password"),resultSet.getLong("phone"),resultSet.getString("gander"),resultSet.getBoolean("status_compte"),role,adress,fabrique,aclass,specialiter);
 
                 students.add(student);
@@ -77,11 +79,11 @@ public class StudentDaoImp implements StudentDao{
             preparedStatement.setLong(1,id_user);
             ResultSet resultSet =preparedStatement.executeQuery();
             if(resultSet.next()){
-                Role role = (Role)resultSet.getObject("Role");
-                Adress adress = (Adress) resultSet.getObject("Adress");
-                Fabrique fabrique = (Fabrique) resultSet.getObject("Fabrique");
-                Specialiter specialiter = (Specialiter) resultSet.getObject("Specialiter");
-                org.youcode.foracademy.models.Class aclass = (Class) resultSet.getObject("Class");
+                Role role = new RoleDaoImp().findById(resultSet.getLong("id_role"));
+                Adress adress = new AdressDaoImp().findById(resultSet.getLong("id_adress")) ;
+                Fabrique fabrique = new FabriqueDaoImp().finById(resultSet.getLong("id_fabrique"));
+                Specialiter specialiter = new SpecialiterDaoImp().findById(resultSet.getLong("id_specialiter"));
+                Class aclass = new ClassDaoImp().findById(resultSet.getLong("id_class")) ;
 
                 Student student= new Student(resultSet.getLong("id_user"),resultSet.getString("first_name"),
                         resultSet.getString("last_name"),resultSet.getString("email"),resultSet.getString("password"),

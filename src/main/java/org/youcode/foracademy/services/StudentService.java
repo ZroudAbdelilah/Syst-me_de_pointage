@@ -2,12 +2,17 @@ package org.youcode.foracademy.services;
 
 import org.youcode.foracademy.dao.studentDao.StudentDao;
 
+import org.youcode.foracademy.dao.studentDao.StudentDaoImp;
 import org.youcode.foracademy.models.Student;
 
 import java.util.List;
 
 public class StudentService {
     private StudentDao studentDao;
+
+    public StudentService() {
+        this.studentDao = new StudentDaoImp();
+    }
 
     public StudentService(StudentDao studentDao) {
         this.studentDao = studentDao;
@@ -25,6 +30,6 @@ public class StudentService {
         return studentDao.insert(student);
     }
     public Student update(Student student){
-        return studentDao.insert(student);
+        return studentDao.update(student);
     }
 }

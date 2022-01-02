@@ -1,6 +1,8 @@
 package org.youcode.foracademy.dao.formateurDao;
 
 
+import org.youcode.foracademy.dao.classDao.ClassDaoImp;
+import org.youcode.foracademy.dao.specialiterDao.SpecialiterDaoImp;
 import org.youcode.foracademy.models.*;
 import org.youcode.foracademy.util.DbConnection;
 import org.youcode.foracademy.models.Class;
@@ -78,11 +80,13 @@ public class FormateurDaoImp implements FormateurDao {
             preparedStatement.setLong(1,id_user);
             ResultSet resultSet =preparedStatement.executeQuery();
             if(resultSet.next()){
-                Role role = (Role)resultSet.getObject("Role");
-                Adress adress = (Adress) resultSet.getObject("Adress");
-                Fabrique fabrique = (Fabrique) resultSet.getObject("Fabrique");
-                Specialiter specialiter = (Specialiter) resultSet.getObject("Specialiter");
-                Class aclass = (Class) resultSet.getObject("Class");
+                //Promotion promotion = new PromotionDaoImp().findById(resultSet.getLong("id_promotion"));
+
+                Role role = new RoleDaoImp().findById(resultSet.getLong("id_role"));
+                Adress adress = new AdressDaoImp().findById(resultSet.getLong("id_adress")) ;
+                Fabrique fabrique = new FabriqueDaoImp().finById(resultSet.getLong("id_fabrique"));
+                Specialiter specialiter = new SpecialiterDaoImp().findById(resultSet.getLong("id_specialiter"));
+                Class aclass = new ClassDaoImp().findById(resultSet.getLong("id_class")) ;
 
                 Formateur formateur= new Formateur(resultSet.getLong("id_user"),resultSet.getString("first_name"),
                         resultSet.getString("last_name"),resultSet.getString("email"),resultSet.getString("password"),

@@ -2,12 +2,17 @@ package org.youcode.foracademy.services;
 
 
 import org.youcode.foracademy.dao.formateurDao.FormateurDao;
+import org.youcode.foracademy.dao.formateurDao.FormateurDaoImp;
 import org.youcode.foracademy.models.Formateur;
 
 import java.util.List;
 
 public class FormateurService {
     private FormateurDao formateurDao;
+
+    public FormateurService() {
+        this.formateurDao = new FormateurDaoImp();
+    }
 
     public FormateurService(FormateurDao formateurDao) {
         this.formateurDao = formateurDao;
@@ -26,6 +31,6 @@ public class FormateurService {
         return formateurDao.insert(formateur);
     }
     public Formateur update(Formateur formateur){
-        return formateurDao.insert(formateur);
+        return formateurDao.update(formateur);
     }
 }

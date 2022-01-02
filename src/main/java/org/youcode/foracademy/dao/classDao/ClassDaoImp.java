@@ -1,5 +1,7 @@
 package org.youcode.foracademy.dao.classDao;
 
+import org.youcode.foracademy.dao.promotionDao.PromotionDao;
+import org.youcode.foracademy.dao.promotionDao.PromotionDaoImp;
 import org.youcode.foracademy.models.Class;
 import org.youcode.foracademy.models.Promotion;
 import org.youcode.foracademy.util.DbConnection;
@@ -48,7 +50,7 @@ public class ClassDaoImp implements ClassDao {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
 
-                Promotion promotion = (Promotion) resultSet.getObject("Promotion");
+                Promotion promotion = new PromotionDaoImp().findById(resultSet.getLong("id_promotion"));
                 Class aclass = new Class(resultSet.getLong("id_class"),resultSet.getString("name_class"),resultSet.getDate("start_of_day"),resultSet.getDate("end_of_day"),promotion);
 
                 aclasss.add(aclass);
@@ -75,7 +77,8 @@ public class ClassDaoImp implements ClassDao {
             preparedStatement.setLong(1,id_class);
             ResultSet resultSet =preparedStatement.executeQuery();
             if(resultSet.next()){
-                Promotion promotion = (Promotion) resultSet.getObject("Promotion");
+
+                Promotion promotion = new PromotionDaoImp().findById(resultSet.getLong("id_promotion"));
                 Class aclass = new Class(resultSet.getLong("id_class"),resultSet.getString("name_class"),resultSet.getDate("start_of_day"),resultSet.getDate("end_of_day"),promotion);
                 return aclass;
             }
@@ -94,11 +97,13 @@ public class ClassDaoImp implements ClassDao {
     @Override
     public Class insert(Class aclass){
         Connection con = DbConnection.getConnection();
+
+
         if(con == null ){
             return null;
         }else if (aclass.getId_class() == 0) {
 
-            String query =" INSERT INTO class (name_class, ,start_of_date,end_of_date,id_promotion) VALUES (?,?,?,?,?);";
+            String query =" INSERT INTO class (name_class,start_of_day,end_of_day,id_promotion) VALUES (?,?,?,?);";
             try (PreparedStatement preparedStatement = con.prepareStatement(query)){
 
                 preparedStatement.setString(1, aclass.getName_class());

@@ -2,13 +2,18 @@ package org.youcode.foracademy.services;
 
 import org.youcode.foracademy.dao.classDao.ClassDao;
 
+import org.youcode.foracademy.dao.classDao.ClassDaoImp;
+
 import org.youcode.foracademy.models.Class;
 
 
 import java.util.List;
 
 public class ClassService {
-   private ClassDao classDao;
+   public ClassDao classDao;
+    public ClassService() {
+        this.classDao= new ClassDaoImp();
+    }
 
     public ClassService(ClassDao classDao) {
         this.classDao = classDao;
@@ -27,6 +32,6 @@ public class ClassService {
         return classDao.insert(aclass);
     }
     public Class update(Class aclass){
-        return classDao.insert(aclass);
+        return classDao.update(aclass);
     }
 }

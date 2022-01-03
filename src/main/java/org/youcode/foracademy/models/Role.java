@@ -17,6 +17,12 @@ public class Role {
         this.status_role = status_role;
     }
 
+    public Role(String name_role, String description_role, boolean status_role) {
+        this.name_role = name_role;
+        this.description_role = description_role;
+        this.status_role = status_role;
+    }
+
     public long getId_role() {
         return this.id_role;
     }

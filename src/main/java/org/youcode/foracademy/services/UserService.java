@@ -4,10 +4,14 @@ import org.youcode.foracademy.interfaceImp.UserDao;
 import org.youcode.foracademy.models.User;
 import java.util.List;
 
-
+//Go to the class and click alt + enter to generate jUnite tests boilerplate
 public class UserService {
 
     private UserDao userDao;
+
+    public UserService() {
+        this.userDao = new UserDao();
+    }
 
     public UserService(UserDao userDao) {
         this.userDao = userDao;
@@ -30,7 +34,7 @@ public class UserService {
     }
 
     public User update(User user) {
-        return userDao.create(user);
+        return userDao.update(user);
     }
 }
 

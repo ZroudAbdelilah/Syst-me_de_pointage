@@ -32,7 +32,7 @@ public class AdminDao implements IntDAO<Admin> {
             prepare.setString(3, admin.getEmail());
             prepare.setString(4, admin.getPassword());
             prepare.setString(5, admin.getPhone());
-            prepare.setString(6, admin.getGander());
+            prepare.setString(6, admin.getGender());
             prepare.setBoolean(7, admin.isStatus_compte());
             prepare.executeUpdate();
         } catch (SQLException e) {
@@ -130,7 +130,7 @@ public class AdminDao implements IntDAO<Admin> {
             adminStatement.setString(2, admin.getLast_name());
             adminStatement.setString(3, admin.getEmail());
             adminStatement.setString(4, admin.getPhone());
-            adminStatement.setString(5, admin.getGander());
+            adminStatement.setString(5, admin.getGender());
             adminStatement.setBoolean(6, admin.isStatus_compte());
             adminStatement.setLong(7, admin.getId_admin());
 

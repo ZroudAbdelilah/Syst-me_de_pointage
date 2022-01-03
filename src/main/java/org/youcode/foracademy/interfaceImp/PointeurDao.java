@@ -17,13 +17,12 @@ public class PointeurDao implements IntDAO<Pointeur>{
     @Override
     public Pointeur create(Pointeur pointeur) {
         try (PreparedStatement prepare = this.connect.prepareStatement(
-                "INSERT INTO pointeur (" +
-                        "brand," +
-                        "status_pointeur " +
+                "INSERT INTO pointeur (status_pointeur," +
+                        "brand) " +
                         "VALUES(?,?)");
         ) {
-            prepare.setString(1, pointeur.getBrand());
-            prepare.setBoolean(2, pointeur.getStatus_pointeur());
+            prepare.setBoolean(1, pointeur.getStatus_pointeur());
+            prepare.setString(2, pointeur.getBrand());
             prepare.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -90,16 +89,16 @@ public class PointeurDao implements IntDAO<Pointeur>{
         try (
                 PreparedStatement prepare = this.connect.prepareStatement(
                         "UPDATE pointeur set " +
-
-                                "brand," +
-                                "status_pointeur " +
+                                "brand = ? ," +
+                                "status_pointeur = ? " +
                                 "WHERE id_pointeur = ? ");
         ) {
-
             prepare.setString(1, pointeur.getBrand());
             prepare.setBoolean(2, pointeur.getStatus_pointeur());
-            prepare.executeUpdate();
+            prepare.setLong(3, pointeur.getId_pointeur());
 
+
+            prepare.executeUpdate();
             pointeur = this.read(pointeur.getId_pointeur());
         } catch (SQLException e) {
             e.printStackTrace();

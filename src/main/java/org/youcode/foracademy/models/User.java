@@ -86,7 +86,7 @@ public class User {
         this.password = password;
     }
 
-    public String getPhone() {
+    public long getPhone() {
         return phone;
     }
 

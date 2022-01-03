@@ -31,7 +31,7 @@ public class AdminDao implements IntDAO<Admin> {
             prepare.setString(2, admin.getLast_name());
             prepare.setString(3, admin.getEmail());
             prepare.setString(4, admin.getPassword());
-            prepare.setLong(5, admin.getPhone());
+            prepare.setString(5, admin.getPhone());
             prepare.setString(6, admin.getGander());
             prepare.setBoolean(7, admin.isStatus_compte());
             prepare.executeUpdate();
@@ -60,7 +60,7 @@ public class AdminDao implements IntDAO<Admin> {
                         result.getString("last_name"),
                         result.getString("email"),
                         result.getString("password"),
-                        result.getLong("phone"),
+                        result.getString("phone"),
                         result.getString("gander"),
                         result.getBoolean("status_compte"),
                         (Role)result.getObject("id_role"),
@@ -90,7 +90,7 @@ public class AdminDao implements IntDAO<Admin> {
                         result.getString("last_name"),
                         result.getString("email"),
                         result.getString("password"),
-                        result.getLong("phone"),
+                        result.getString("phone"),
                         result.getString("gander"),
                         result.getBoolean("status_compte"),
                         (Role)result.getObject("id_role"),
@@ -129,7 +129,7 @@ public class AdminDao implements IntDAO<Admin> {
             adminStatement.setString(1, admin.getFirst_name());
             adminStatement.setString(2, admin.getLast_name());
             adminStatement.setString(3, admin.getEmail());
-            adminStatement.setLong(4, admin.getPhone());
+            adminStatement.setString(4, admin.getPhone());
             adminStatement.setString(5, admin.getGander());
             adminStatement.setBoolean(6, admin.isStatus_compte());
             adminStatement.setLong(7, admin.getId_admin());

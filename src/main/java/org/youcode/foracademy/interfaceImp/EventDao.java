@@ -18,11 +18,10 @@ public class EventDao implements IntDAO<Event> {
     @Override
     public Event create(Event event) {
         try (PreparedStatement prepare = this.connect.prepareStatement(
-                "INSERT INTO event (" +
-                        "start_date," +
+                "INSERT INTO event (start_date," +
                         "end_date," +
                         "name_event," +
-                        "status_event " +
+                        "status_event) " +
                         "VALUES(?,?,?,?)");
         ) {
             prepare.setDate(1, Utils.getSqlDate(event.getStart_date()));
@@ -41,18 +40,10 @@ public class EventDao implements IntDAO<Event> {
     @Override
     public List readAll() {
         List events = null;
-        try (
-                ResultSet result = this.connect.createStatement().executeQuery(
-                        "SELECT * FROM event");
-        ) {
+        try (ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM event");) {
             events = new ArrayList();
             while (result.next()) {
-                Event event = new Event(
-                        result.getInt("id_event"),
-                        result.getString("name_event"),
-                        result.getDate("start_date"),
-                        result.getDate("end_date"),
-                        result.getBoolean("status_event")
+                Event event = new Event(result.getInt("id_event"), result.getString("name_event"), result.getDate("start_date"), result.getDate("end_date"), result.getBoolean("status_event")
 
                 );
                 events.add(event);
@@ -68,18 +59,9 @@ public class EventDao implements IntDAO<Event> {
     @Override
     public Event read(long id) {
         Event event = null;
-        try (
-                ResultSet result = this.connect.createStatement().executeQuery(
-                        "SELECT * FROM event WHERE id_event = " + id);
-        ) {
+        try (ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM event WHERE id_event = " + id);) {
             if (result.next()) {
-                event = new Event(
-                        result.getInt("id_event"),
-                        result.getString("name_event"),
-                        result.getDate("start_date"),
-                        result.getDate("end_date"),
-                        result.getBoolean("status_event")
-                );
+                event = new Event(result.getInt("id_event"), result.getString("name_event"), result.getDate("start_date"), result.getDate("end_date"), result.getBoolean("status_event"));
 
             }
 
@@ -98,21 +80,15 @@ public class EventDao implements IntDAO<Event> {
 
     @Override
     public Event update(Event event) {
-        try (
-                PreparedStatement prepare = this.connect.prepareStatement(
-                        "UPDATE event set " +
+        try (PreparedStatement prepare = this.connect.prepareStatement("UPDATE event set " +
 
-                                "start_date," +
-                                "end_date," +
-                                "name_event," +
-                                "status_event " +
-                                "WHERE id_event = ? ");
-        ) {
+                "start_date = ?," + "end_date = ?," + "name_event = ?," + "status_event = ? " + "WHERE id_event = ? ");) {
 
             prepare.setDate(1, Utils.getSqlDate(event.getStart_date()));
             prepare.setDate(2, Utils.getSqlDate(event.getEnd_date()));
             prepare.setString(3, event.getName_event());
             prepare.setBoolean(4, event.getStatus_event());
+            prepare.setLong(5, event.getId_event());
 
             prepare.executeUpdate();
 
@@ -127,12 +103,7 @@ public class EventDao implements IntDAO<Event> {
     /* DELETE */
     @Override
     public Event delete(Event event) {
-        try (
-                PreparedStatement eventStatement = this.connect.prepareStatement(
-                        "UPDATE event SET " +
-                                "status_event = ? " +
-                                "WHERE id_event = ? ");
-        ) {
+        try (PreparedStatement eventStatement = this.connect.prepareStatement("UPDATE event SET " + "status_event = ? " + "WHERE id_event = ? ");) {
             eventStatement.setBoolean(1, false);
             eventStatement.setLong(2, event.getId_event());
             eventStatement.executeUpdate();

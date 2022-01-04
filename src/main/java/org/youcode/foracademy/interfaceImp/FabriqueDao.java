@@ -20,7 +20,7 @@ public class FabriqueDao implements IntDAO<Fabrique>{
         try (PreparedStatement prepare = this.connect.prepareStatement(
                 "INSERT INTO fabrique (" +
                         "name_fabrique," +
-                        "status_adress " +
+                        "status_fabrique) " +
                         "VALUES(?,?)");
         ) {
             prepare.setString(1, fabrique.getName_fabrique());

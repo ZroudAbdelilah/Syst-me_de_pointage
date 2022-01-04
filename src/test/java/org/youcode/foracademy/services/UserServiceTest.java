@@ -10,7 +10,7 @@ import org.youcode.foracademy.interfaces.IntDAO;
 import org.youcode.foracademy.models.*;
 import org.youcode.foracademy.models.Class;
 import java.sql.Date;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 
 class UserServiceTest {
@@ -24,7 +24,7 @@ class UserServiceTest {
     @Test
     void readAll() {
         UserService userService = new UserService();
-        LinkedList<User> users = new LinkedList<User>();
+        ArrayList<User> users = new ArrayList<User>();
         assertInstanceOf(users.getClass(),userService.readAll());
     }
 

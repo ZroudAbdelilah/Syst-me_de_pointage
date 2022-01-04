@@ -10,6 +10,7 @@ import org.youcode.foracademy.interfaces.IntDAO;
 import org.youcode.foracademy.models.*;
 import org.youcode.foracademy.models.Class;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 
@@ -24,7 +25,7 @@ class PointeurServiceTest {
     @Test
     void readAll() {
         PointeurService pointeurService = new PointeurService();
-        LinkedList<Pointeur> pointeurs = new LinkedList<Pointeur>();
+        ArrayList<Pointeur> pointeurs = new ArrayList<Pointeur>();
         assertInstanceOf(pointeurs.getClass(),pointeurService.readAll());
     }
 

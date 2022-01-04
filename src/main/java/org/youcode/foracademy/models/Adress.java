@@ -6,23 +6,36 @@ public class Adress {
     private String region;
     private String city;
     private Integer code_postal;
+    private boolean status_adress;
 
     public Adress() {
     }
 
-    public Adress(long id_adress, String country, String region, String city, Integer code_postal) {
+    public Adress(long id_adress, String country, String region, String city, Integer code_postal, boolean status_adress) {
         this.id_adress = id_adress;
         this.country = country;
         this.region = region;
         this.city = city;
         this.code_postal = code_postal;
+        this.status_adress = status_adress;
+
 
     }
-    public Adress(String country, String region, String city, Integer code_postal) {
+    public Adress(String country, String region, String city, Integer code_postal, boolean status_adress) {
         this.country = country;
         this.region = region;
         this.city = city;
         this.code_postal = code_postal;
+        this.status_adress = status_adress;
+
+    }
+
+    public boolean isStatus_adress() {
+        return status_adress;
+    }
+
+    public void setStatus_adress(boolean status_adress) {
+        this.status_adress = status_adress;
     }
 
     public long getId_adress() {

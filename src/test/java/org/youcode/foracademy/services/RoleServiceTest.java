@@ -10,6 +10,7 @@ import org.youcode.foracademy.interfaces.IntDAO;
 import org.youcode.foracademy.models.*;
 import org.youcode.foracademy.models.Class;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 
@@ -24,7 +25,7 @@ class RoleServiceTest {
     @Test
     void readAll() {
         RoleService roleService = new RoleService();
-        LinkedList<Role> roles = new LinkedList<Role>();
+        ArrayList<Role> roles = new ArrayList<Role>();
         assertInstanceOf(roles.getClass(),roleService.readAll());
     }
 
